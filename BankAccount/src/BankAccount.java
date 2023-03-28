@@ -1,10 +1,32 @@
 public class BankAccount {
 
     private String customerName;
-    private int accountNumber;
+    private String accountNumber;
     private double accountBalance;
     private String emailAddress;
     private String phoneNumber;
+
+    public BankAccount(){
+        this("56789",2.50,"Default name","Default address","Default phone");
+        System.out.println("Empty constructor called");
+
+    }
+
+    public BankAccount(String accountNumber,double accountBalance, String customerName, String emailAddress, String phoneNumber){
+        System.out.println("Constructor with parameters called");
+        this.accountNumber=accountNumber;
+        this.accountBalance=accountBalance;
+        this.customerName=customerName;
+        this.emailAddress=emailAddress;
+        this.phoneNumber=phoneNumber;
+    }
+
+    public BankAccount(String customerName, String emailAddress, String phoneNumber) {
+        this("99999", 100.55, customerName, emailAddress,phoneNumber);
+        this.customerName = customerName;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+    }
 
     public  void depositFunds (double depositAmount){
         accountBalance+=depositAmount;
@@ -24,7 +46,7 @@ public class BankAccount {
         return customerName;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
@@ -44,21 +66,20 @@ public class BankAccount {
         this.customerName = customerName;
     }
 
+    /*
     public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
+          this.accountNumber = accountNumber;
     }
-
     public void setAccountBalance(double accountBalance) {
-        this.accountBalance = accountBalance;
+      this.accountBalance = accountBalance;
     }
-
     public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+      this.emailAddress = emailAddress;
     }
-
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+      this.phoneNumber = phoneNumber;
     }
+    */
 
 
 }
