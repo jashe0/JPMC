@@ -9,14 +9,11 @@ public class Printer {
         this.duplex = duplex;
     }
 
-    public int addToner(int tonerAmount){
-        if(tonerAmount + tonerLevel < 0){
-            return -1;
-        } else if (tonerAmount + tonerLevel > 100) {
-            return -1;
-        } else {
-            return tonerAmount+tonerLevel;
+    public int addToner(int tonerAmount) {
+        if (tonerAmount > 0 && tonerAmount <= 100) {
+            return (tonerLevel + tonerAmount > 100) ? -1 : (tonerLevel += tonerAmount);
         }
+        return -1;
     }
 
     public int printPages(int pages){
