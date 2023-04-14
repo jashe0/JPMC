@@ -9,8 +9,8 @@ public class Main {
         Car telsa = new ElectricCar("2022 Red Telsa Model 3",568,75);
         runRace(telsa);
 
-        Car ferrariHybdrid = new HybridCar("2022 Black Ferrari SF90 Stradale",16,8,8);
-        runRace(ferrariHybdrid);
+        Car ferrariHybrid = new HybridCar("2022 Black Ferrari SF90 Stradale",16,8,8);
+        runRace(ferrariHybrid);
     }
 
     public static void runRace(Car car){
