@@ -51,7 +51,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682444955280</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="complete oop master challenge">
+      <created>1682451044533</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682451044533</updated>
+    </task>
+    <task id="LOCAL-00003" summary="complete oop master challenge">
+      <created>1682451050082</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1682451050082</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
