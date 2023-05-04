@@ -13,6 +13,8 @@ public class Main {
         int min = findMin(filledUserArray);
         System.out.println("The minimum element is "+min);
 
+        System.out.println("The array in reverse is "+Arrays.toString(reverse(filledUserArray)));
+
 
 
     }
@@ -35,5 +37,16 @@ public class Main {
             }
         }
         return min;
+    }
+
+    private static int[] reverse(int[] userArray){
+        int maxIndex = userArray.length - 1;
+        int halfLength = userArray.length / 2;
+        for(int i = 0; i < halfLength; i++){
+            int temp = userArray[i];
+            userArray[i] = userArray[maxIndex - i];
+            userArray[maxIndex  - i] = temp;
+        }
+        return userArray;
     }
 }
