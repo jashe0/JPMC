@@ -3,7 +3,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int filledUserArray[] = readIntegers();
+        Scanner scanner = new Scanner(System.in);
+        int size = scanner.nextInt();
+
+        int filledUserArray[] = readIntegers(size);
 
         System.out.println(Arrays.toString(filledUserArray));
 
@@ -14,9 +17,9 @@ public class Main {
 
     }
 
-    private static int[] readIntegers(){
+    private static int[] readIntegers(int size){
         Scanner scanner = new Scanner(System.in);
-        int[] userArray = new int[5];
+        int[] userArray = new int[size];
         for(int i = 0; i < userArray.length; i ++){
             int userInt = scanner.nextInt();
             userArray[i] = userInt;
