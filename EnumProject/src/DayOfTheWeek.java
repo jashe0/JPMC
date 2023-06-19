@@ -1,3 +1,3 @@
 public enum DayOfTheWeek {
-    SUN,MON,TUES,WEDS,THUR,FRI,SAT
+    SUN,MON,TUE,WED,THU,FRI,SAT
 }
