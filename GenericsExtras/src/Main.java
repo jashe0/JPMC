@@ -1,6 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
+record Employee(String name) implements QueryItem{
+
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        return false;
+    }
+}
+
 public class Main {
     public static void main(String[] args) {
 
@@ -20,6 +28,15 @@ public class Main {
 
         testList(new ArrayList<>(List.of("Don","Bary","Charlie")));
         testList(new ArrayList<>(List.of(1,2,3)));
+
+        var queryList = new QueryList<>(lpaStudents);
+        var matches = queryList.getMatches("Course","Python");
+        printMoreList(matches);
+
+        var students2021 = QueryList.<Student>getMatches(new ArrayList<>(),"YearStarted","2021");
+        printMoreList(students2021);
+
+        //QueryList<Employee> employeeList = new QueryList<>();
 
     }
 
