@@ -1,6 +1,9 @@
 import java.util.Random;
 
-public class Student implements QueryItem {
+public class Student implements QueryItem, Comparable<Student> {
+
+    private static int LAST_ID = 10000;
+    private int studentID;
     private String name;
     private String course;
     private int yearStarted;
@@ -8,6 +11,7 @@ public class Student implements QueryItem {
     private static String[] firstNames = {"Ann","Bill","Cathy","John","Tim"};
     private static String[] courses = {"C++","Java","Python"};
     public Student(){
+        studentID = LAST_ID++;
         int lastNameIndex = random.nextInt(65,91);
         name = firstNames[random.nextInt(5)];
         course = courses[random.nextInt(3)];
@@ -17,7 +21,7 @@ public class Student implements QueryItem {
 
     @Override
     public String toString() {
-        return "%-15s %-15s %d".formatted(name,course,yearStarted);
+        return "%d %-15s %-15s %d".formatted(studentID, name, course, yearStarted);
     }
 
     public int getYearStarted() {
@@ -34,5 +38,10 @@ public class Student implements QueryItem {
             case "YEARSTARTED" -> yearStarted == (Integer.parseInt(value));
             default -> false;
         };
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return Integer.valueOf(studentID).compareTo(o.studentID);
     }
 }
