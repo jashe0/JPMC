@@ -1,73 +1,70 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.ListIterator;
 
 public class Album {
     private String name;
     private String artist;
-    private ArrayList<Song> songs;
+    private SongList songs;
 
     public Album(String name, String artist) {
         this.name = name;
         this.artist = artist;
-        this.songs = new ArrayList<Song>();
+        this.songs = new SongList();
     }
 
     public boolean addSong(String title, double duration){
-        if(findSong(title) != null){
-            return false;
-        }
-
-        Song x = new Song(title,duration);
-
-        if(songs.add(x)){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private Song findSong(String title){
-        if(!songs.isEmpty()){
-            for(Song s: songs){
-                if(s.getTitle().equals(title)){
-                    return s;
-                }
-            }
-        }
-        return null;
+        return this.songs.add(new Song(title,duration));
     }
 
     public boolean addToPlayList(int trackNumber, LinkedList<Song> playList) {
-        if (trackNumber <= 0 || trackNumber > songs.size()) {
-            return false;
+        Song checkedSong = this.songs.findSong(trackNumber);
+        if(checkedSong != null) {
+            playList.add(checkedSong);
+            return true;
         }
-        Song songToAdd = songs.get(trackNumber-1);
-        String songToAddTitle = songToAdd.getTitle();
-        ListIterator<Song> playListIterator = playList.listIterator();
-        while (playListIterator.hasNext()) {
-            if  (playListIterator.next().getTitle().compareTo(songToAddTitle) == 0) {
-                return false;
-            }
-        }
-        playList.add(songToAdd);
-        return true;
+        return false;
     }
 
     public boolean addToPlayList(String title, LinkedList<Song> playList) {
-        //verify the song exists
-        Song songToAdd = findSong(title);
-        if (songToAdd == null) {
-            return false;
+        Song checkedSong = this.songs.findSong(title);
+        if(checkedSong != null) {
+            playList.add(checkedSong);
+            return true;
         }
-        ListIterator<Song> playListIterator = playList.listIterator();
-        while (playListIterator.hasNext()) {
-            if  (playListIterator.next().getTitle().compareTo(songToAdd.getTitle()) == 0) {
+        return false;
+    }
+
+    private static class SongList{
+        private ArrayList<Song> songs;
+
+        private SongList(){
+            this.songs = new ArrayList<Song>();
+        }
+
+        private boolean add(Song song){
+            if(songs.contains(song)){
                 return false;
             }
+            this.songs.add(song);
+            return true;
         }
-        playList.add(songToAdd);
-        return true;
+
+        private Song findSong(String songTitle){
+            for(Song checkingSong: this.songs){
+                if(checkingSong.getTitle().equals(songTitle)){
+                    return checkingSong;
+                }
+            }
+            return null;
+        }
+
+        private Song findSong(int trackNumber){
+            int index = trackNumber - 1;
+            if((index > 0) && (index < songs.size())){
+                return  songs.get(index);
+            }
+            return null;
+        }
     }
 }
 
